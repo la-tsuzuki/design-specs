@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>業務委託契約と個別契約の関係図</title>
+<style>
+  body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; background: #f5f7fa; padding: 40px; color: #333; }
+  h1 { text-align: center; font-size: 22px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #666; font-size: 13px; margin-bottom: 40px; }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* 全体構造 */
+  .structure { display: flex; gap: 40px; align-items: flex-start; margin-bottom: 50px; }
+  .box { border-radius: 12px; padding: 24px; flex: 1; }
+  .master { background: #e8f0fe; border: 2px solid #4285f4; }
+  .individual { background: #fef7e0; border: 2px solid #f9ab00; }
+  .box h2 { margin: 0 0 12px 0; font-size: 17px; }
+  .box ul { margin: 8px 0; padding-left: 20px; font-size: 14px; line-height: 1.8; }
+  .box .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+  .master .tag { background: #4285f4; color: #fff; }
+  .individual .tag { background: #f9ab00; color: #fff; }
+  .highlight { background: #fff3cd; padding: 2px 4px; border-radius: 3px; }
+
+  /* 矢印 */
+  .arrow-area { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 80px; padding-top: 30px; }
+  .arrow-line { width: 2px; height: 30px; background: #999; }
+  .arrow-text { font-size: 12px; color: #666; writing-mode: horizontal-tb; text-align: center; padding: 4px 0; }
+  .arrow-head { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 12px solid #999; }
+
+  /* フロー */
+  .flow { margin-top: 30px; }
+  .flow h3 { font-size: 16px; margin-bottom: 16px; border-bottom: 2px solid #4285f4; padding-bottom: 6px; }
+  .flow-steps { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+  .step { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; flex: 1; min-width: 180px; position: relative; }
+  .step-num { display: inline-block; background: #4285f4; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-size: 14px; font-weight: bold; margin-bottom: 8px; }
+  .step h4 { margin: 0 0 6px 0; font-size: 14px; }
+  .step p { margin: 0; font-size: 13px; color: #555; line-height: 1.6; }
+  .step-arrow { display: flex; align-items: center; font-size: 20px; color: #999; padding: 0 4px; }
+
+  /* 個別契約のパターン */
+  .patterns { margin-top: 40px; }
+  .patterns h3 { font-size: 16px; margin-bottom: 16px; border-bottom: 2px solid #f9ab00; padding-bottom: 6px; }
+  .pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pattern { background: #fff; border-radius: 10px; padding: 18px; border-left: 4px solid; }
+  .pattern-a { border-left-color: #34a853; }
+  .pattern-b { border-left-color: #4285f4; }
+  .pattern h4 { margin: 0 0 8px 0; font-size: 14px; }
+  .pattern p { margin: 0; font-size: 13px; color: #555; line-height: 1.7; }
+
+  /* 注意書き */
+  .notes { margin-top: 40px; background: #fff; border-radius: 10px; padding: 20px; border: 1px solid #ddd; }
+  .notes h3 { font-size: 15px; margin: 0 0 12px 0; color: #d93025; }
+  .notes ul { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.8; }
+  .notes .ref { margin-top: 12px; font-size: 12px; color: #888; }
+
+  /* 時系列 */
+  .timeline { margin-top: 20px; }
+  .timeline-row { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; font-size: 13px; }
+  .timeline-label { min-width: 100px; font-weight: bold; }
+  .timeline-bar { height: 24px; border-radius: 4px; display: flex; align-items: center; padding: 0 10px; color: #fff; font-size: 12px; }
+  .bar-master { background: #4285f4; }
+  .bar-ind { background: #f9ab00; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>業務委託契約と個別契約の関係図</h1>
+  <p class="subtitle">財前先生のアドバイスに基づく B案（基本契約 + 個別契約）の構造整理</p>
+
+  <!-- メイン構造図 -->
+  <div class="structure">
+    <div class="box master">
+      <span class="tag">基本契約</span>
+      <h2>📄 業務委託基本契約書</h2>
+      <ul>
+        <li>契約の<strong>骨格・ルール</strong>を定める</li>
+        <li>契約期間（例：1年間、自動更新）</li>
+        <li>秘密保持義務</li>
+        <li>知的財産の帰属</li>
+        <li>損害賠償</li>
+        <li>解除条件（第12条）</li>
+        <li>反社会的勢力の排除</li>
+        <li>裁判管轄</li>
+      </ul>
+      <p style="font-size:13px; color:#4285f4; margin-top:12px;">
+        ※ この契約だけでは具体的な業務・報酬は決まらない
+      </p>
+    </div>
+
+    <div class="arrow-area">
+      <div class="arrow-text">第2条1項に基づき<br>都度発注</div>
+      <div style="font-size: 30px; color: #999;">→</div>
+    </div>
+
+    <div class="box individual">
+      <span class="tag">個別契約</span>
+      <h2>📋 業務委託個別契約（通知）</h2>
+      <ul>
+        <li>具体的な<strong>業務内容</strong></li>
+        <li><span class="highlight">業務期間（納期）</span></li>
+        <li><span class="highlight">報酬額</span></li>
+        <li><span class="highlight">報酬の支払期日</span></li>
+        <li>成果物・納品方法</li>
+        <li>連絡方法・窓口</li>
+      </ul>
+      <p style="font-size:13px; color:#f9ab00; margin-top:12px;">
+        ※ フリーランス法 第3条1項 に基づき明記が必要
+      </p>
+    </div>
+  </div>
+
+  <!-- 時系列イメージ -->
+  <div style="background:#fff; border-radius:10px; padding:20px; border:1px solid #ddd; margin-bottom: 30px;">
+    <h3 style="font-size:15px; margin:0 0 16px 0;">📅 時系列イメージ</h3>
+    <div class="timeline">
+      <div class="timeline-row">
+        <span class="timeline-label">基本契約</span>
+        <div class="timeline-bar bar-master" style="width: 100%;">契約期間 1年（自動更新）</div>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-label">個別契約①</span>
+        <div class="timeline-bar bar-ind" style="width: 12%;">1ヶ月目</div>
+        <span style="font-size:12px; color:#888;">← トライアル期間</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-label">個別契約②</span>
+        <div style="width:12%; min-width:12%;"></div>
+        <div class="timeline-bar bar-ind" style="width: 88%;">2ヶ月目〜継続（毎月更新）</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#888; margin:12px 0 0 0;">
+      基本契約の期間内で、個別契約を都度発注する。個別契約を発注しなければ報酬は発生しない。
+    </p>
+  </div>
+
+  <!-- 運用フロー -->
+  <div class="flow">
+    <h3>🔄 実際の運用フロー</h3>
+    <div class="flow-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>採用決定</h4>
+        <p>基本契約書を締結<br>（1年間、秘密保持等を含む）</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>トライアル開始</h4>
+        <p>個別契約①を通知<br>（1ヶ月間の業務・報酬を明記）</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>トライアル評価</h4>
+        <p>実績を見て継続判断<br>→ 不適合なら<strong>個別契約を発注しない</strong></p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>本契約移行</h4>
+        <p>個別契約②を通知<br>（条件更新 or 継続）<br>以降毎月自動継続</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 個別契約の締結パターン -->
+  <div class="patterns">
+    <h3>📝 個別契約の締結方法（2パターン）</h3>
+    <div class="pattern-grid">
+      <div class="pattern pattern-a">
+        <h4>✅ パターンA：通知 + みなし承諾</h4>
+        <p>
+          こちらから業務内容・報酬等を記載した通知を送付。<br>
+          相手が異議を述べなければ、個別契約が成立したとみなす。<br><br>
+          <strong>メリット：</strong>運用が軽い。Chatwork等で送信可能。<br>
+          <strong>根拠：</strong>基本契約 第2条の規定による。
+        </p>
+      </div>
+      <div class="pattern pattern-b">
+        <h4>📄 パターンB：書面で双方署名</h4>
+        <p>
+          個別契約書を作成し、双方が署名押印。<br>
+          初回のトライアル時など重要な場面で使用。<br><br>
+          <strong>メリット：</strong>証拠として強い。条件の合意が明確。<br>
+          <strong>用途：</strong>初回契約、大幅な条件変更時。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="notes">
+    <h3>⚠️ 財前先生からの注意事項</h3>
+    <ul>
+      <li>個別契約の通知には<strong>納期・報酬額・支払期日</strong>を必ず明記する（フリーランス法 第3条1項）</li>
+      <li>基本契約の「契約期間」と個別契約の「業務期間（納期）」は<strong>別物</strong>として区別する</li>
+      <li>基本契約期間が1年間でも、個別契約を発注しなければ報酬は発生しない</li>
+      <li>トライアル期間の解除条項（第5条4号）は第12条に移して明記した方が安全</li>
+      <li>裁判所は契約書の文言だけでなく<strong>実態</strong>で雇用か業務委託かを判断する</li>
+      <li>「試験採用」「試用期間」「本採用」→「トライアル」「業務委託開始」に文言変更推奨</li>
+    </ul>
+    <div class="ref">参照法令：フリーランス法 第3条1項 / 施行規則 第1条 / 民法641条・651条</div>
+  </div>
+</div>
+</body>
+</html>
