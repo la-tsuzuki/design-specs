@@ -67,6 +67,48 @@
   <h1>業務委託契約と個別契約の関係図</h1>
   <p class="subtitle">財前先生のアドバイスに基づく B案（基本契約 + 個別契約）の構造整理</p>
 
+  <!-- リベ大の業務委託の実態 -->
+  <div style="background:#fff; border-radius:12px; padding:24px; margin-bottom:30px; border:1px solid #ddd; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+    <h2 style="font-size:17px; margin:0 0 16px 0; padding-bottom:8px; border-bottom:2px solid #34a853;">🏢 前提：リベ大リベシティにおける業務委託の実態</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+      <div style="background:#e6f4ea; border-radius:8px; padding:16px;">
+        <div style="font-size:14px; font-weight:bold; margin-bottom:8px;">📝 契約上の形態</div>
+        <div style="font-size:13px; line-height:1.8; color:#333;">
+          ・個人事業主との<strong>業務委託契約</strong><br>
+          ・ざっくりとした役務適用範囲を定める<br>
+          ・付加価値に応じた<strong>月額報酬</strong>を支払う<br>
+          ・稼働時間は問わない（成果ベース）
+        </div>
+      </div>
+      <div style="background:#e8f0fe; border-radius:8px; padding:16px;">
+        <div style="font-size:14px; font-weight:bold; margin-bottom:8px;">🤝 チームとしての実態</div>
+        <div style="font-size:13px; line-height:1.8; color:#333;">
+          ・具体的な業務は<strong>働きながら適性を見て調整</strong><br>
+          ・本人がやりたいことがあれば手を挙げることも可能<br>
+          ・契約は個人事業主だが、<strong>チーム感としては会社員</strong><br>
+          ・Chatworkでの日常的なコミュニケーションが主体
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fafafa; border-radius:8px; padding:14px; font-size:13px; line-height:1.7; border:1px solid #eee;">
+      <strong>💡 つまり：</strong>
+      大半のメンバーは、月額報酬制で継続的にチームの一員として活動している。
+      一方で、画像1点納品・動画1点納品といった<strong>スポット型の関わり</strong>のメンバーもいる。
+      この両方のパターンに対応できる契約構造が必要。
+    </div>
+
+    <div style="margin-top:16px; padding:14px; background:#fff3cd; border-radius:8px; font-size:13px; line-height:1.7; border-left:4px solid #f9ab00;">
+      <strong>⚠️ 財前先生への相談ポイント：</strong><br>
+      実態としてはチームメンバーに近い働き方だが、契約書上は業務委託。
+      裁判所は文言ではなく実態で判断するため、以下を整理したい：<br>
+      ①「基本契約 + 個別契約」の構造で、実態との整合性を取る方法<br>
+      ②月額報酬制（継続型）とスポット納品型を同じフレームワークで扱う方法<br>
+      ③文言を整えることで、偽装請負リスクを軽減する方法
+    </div>
+  </div>
+
   <!-- メイン構造図 -->
   <div class="structure">
     <div class="box master">
@@ -94,16 +136,16 @@
 
     <div class="box individual">
       <span class="tag">個別契約</span>
-      <h2>📋 業務委託個別契約（通知）</h2>
+      <h2>📋 業務委託個別契約（Chatwork通知）</h2>
       <ul>
-        <li>具体的な<strong>業務内容</strong></li>
-        <li><span class="highlight">業務期間（納期）</span></li>
-        <li><span class="highlight">報酬額</span></li>
+        <li>具体的な<strong>業務内容</strong>（役務範囲）</li>
+        <li><span class="highlight">業務期間</span>（1ヶ月単位 / スポット）</li>
+        <li><span class="highlight">報酬額</span>（月額 or 件単価）</li>
         <li><span class="highlight">報酬の支払期日</span></li>
-        <li>成果物・納品方法</li>
         <li>連絡方法・窓口</li>
       </ul>
       <p style="font-size:13px; color:#f9ab00; margin-top:12px;">
+        ※ Chatworkメッセージで通知・合意<br>
         ※ フリーランス法 第3条1項 に基づき明記が必要
       </p>
     </div>
@@ -163,29 +205,59 @@
     </div>
   </div>
 
-  <!-- 個別契約の締結パターン -->
+  <!-- 個別契約の2つの型 -->
   <div class="patterns">
-    <h3>📝 個別契約の締結方法（2パターン）</h3>
+    <h3>📝 個別契約の2つの型</h3>
     <div class="pattern-grid">
       <div class="pattern pattern-a">
-        <h4>✅ パターンA：通知 + みなし承諾</h4>
+        <h4>🔄 継続型（チームメンバー）</h4>
         <p>
-          こちらから業務内容・報酬等を記載した通知を送付。<br>
-          相手が異議を述べなければ、個別契約が成立したとみなす。<br><br>
-          <strong>メリット：</strong>運用が軽い。Chatwork等で送信可能。<br>
-          <strong>根拠：</strong>基本契約 第2条の規定による。
+          大半のメンバーがこのパターン。<br><br>
+          <strong>業務：</strong>ざっくりとした役務範囲。適性を見て調整。本人の希望で手を挙げることも可能<br>
+          <strong>報酬：</strong>月額報酬（付加価値に応じて決定）<br>
+          <strong>期間：</strong>1ヶ月単位。事前申し出がなければ自動更新<br>
+          <strong>稼働：</strong>時間は問わない（成果ベース）<br><br>
+          <strong>通知方法：</strong>Chatworkで通知 → 異議がなければ成立
         </p>
       </div>
       <div class="pattern pattern-b">
-        <h4>📄 パターンB：書面で双方署名</h4>
+        <h4>📦 スポット型（納品ベース）</h4>
         <p>
-          個別契約書を作成し、双方が署名押印。<br>
-          初回のトライアル時など重要な場面で使用。<br><br>
-          <strong>メリット：</strong>証拠として強い。条件の合意が明確。<br>
-          <strong>用途：</strong>初回契約、大幅な条件変更時。
+          画像1点、動画1点など単発の関わり。<br><br>
+          <strong>業務：</strong>具体的な成果物を明示（例：バナー画像1点）<br>
+          <strong>報酬：</strong>件単価（例：1点 ○○円）<br>
+          <strong>期間：</strong>納品完了まで<br>
+          <strong>稼働：</strong>納品物に対して支払い<br><br>
+          <strong>通知方法：</strong>Chatworkで依頼 → 受諾 → 納品 → 請求
         </p>
       </div>
     </div>
+  </div>
+
+  <!-- Chatwork通知の運用 -->
+  <div style="background:#fff; border-radius:12px; padding:24px; margin-top:24px; border:1px solid #ddd;">
+    <h3 style="font-size:16px; margin:0 0 16px 0; padding-bottom:8px; border-bottom:2px solid #34a853;">💬 個別契約の通知方法：Chatwork</h3>
+    <div style="background:#f8f9fa; border-radius:8px; padding:16px; font-size:13px; line-height:1.8; border:1px solid #e9ecef;">
+      <div style="font-weight:bold; margin-bottom:8px;">Chatworkメッセージ例（継続型・初回）：</div>
+      <div style="background:#fff; border-radius:6px; padding:12px; border:1px solid #ddd; font-family:monospace; font-size:12px; white-space:pre-line; color:#333;">【業務委託個別契約のご連絡】
+
+○○さん
+
+業務委託基本契約に基づき、以下の内容で個別業務を委託いたします。
+
+■ 業務内容：○○チームでの○○関連業務
+■ 業務期間：2026年4月1日〜2026年4月30日
+■ 報酬：月額 ○○,○○○円（税込）
+■ 支払：月末締め、翌月末払い
+
+※事前に双方からの申し出がない場合、
+　同条件にて1ヶ月単位で自動更新とします。
+※ご不明点や異議がある場合は5営業日以内に
+　お知らせください。</div>
+    </div>
+    <p style="font-size:12px; color:#888; margin:12px 0 0 0;">
+      ※ 基本契約 第2条に基づき、通知に対して異議がなければ個別契約が成立したとみなす
+    </p>
   </div>
 
   <!-- 注意事項 -->
