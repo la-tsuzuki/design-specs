@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定期配布ポイント廃止 変更指示書 — #1475</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Hiragino Sans', 'Meiryo', sans-serif; background: #f0f2f5; padding: 30px; color: #333; margin: 0; }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .meta { color: #666; font-size: 13px; margin-bottom: 30px; }
+  .meta a { color: #4285f4; }
+
+  .section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .section h2 { font-size: 17px; margin: 0 0 16px 0; padding-bottom: 8px; border-bottom: 2px solid #4285f4; }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: #333; }
+
+  /* サマリーテーブル */
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .summary-table th { background: #f8f9fa; padding: 10px 12px; text-align: left; border: 1px solid #dee2e6; font-weight: 600; }
+  .summary-table td { padding: 10px 12px; border: 1px solid #dee2e6; vertical-align: top; }
+  .summary-table tr:hover td { background: #f8f9fa; }
+
+  /* バッジ */
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  .badge-add    { background: #e6f4ea; color: #1e7e34; border: 1px solid #34a853; }
+  .badge-delete { background: #fce8e6; color: #c0392b; border: 1px solid #e74c3c; }
+  .badge-update { background: #fef7e0; color: #856404; border: 1px solid #f9ab00; }
+  .badge-warn   { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+  .badge-wait   { background: #e8f0fe; color: #1a73e8; border: 1px solid #4285f4; }
+
+  /* 変更ブロック */
+  .change-block { margin: 16px 0; }
+  .change-label { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: #666; margin-bottom: 6px; }
+
+  /* Diff表示 */
+  .diff { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; overflow: hidden; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; }
+  .diff-line { padding: 3px 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-all; }
+  .diff-del { background: #ffeef0; color: #b31d28; }
+  .diff-add { background: #e6ffed; color: #22863a; }
+  .diff-ctx { color: #555; }
+  .diff-header { background: #f1f8ff; color: #586069; padding: 5px 12px; font-size: 12px; border-bottom: 1px solid #d0d7de; }
+
+  /* スクリーンショット */
+  .screens { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .screen-box { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+  .screen-box img { width: 100%; display: block; }
+  .screen-label { padding: 8px 12px; font-size: 12px; font-weight: 600; background: #f8f9fa; border-top: 1px solid #eee; }
+  .screen-label.before { color: #c0392b; }
+  .screen-label.after  { color: #1e7e34; }
+
+  /* モックプレビュー */
+  .mock-notice { background: #fff8e6; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 16px; font-size: 14px; margin: 12px 0; }
+  .mock-notice .notice-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #ffe082; }
+  .mock-notice .notice-row:last-child { border-bottom: none; }
+  .mock-notice .icon { color: #e6a817; font-size: 15px; }
+  .mock-notice .text { flex: 1; font-size: 13px; }
+  .mock-notice .link { font-size: 12px; color: #4285f4; text-decoration: none; }
+  .mock-notice .new-row { background: #e6f4ea; border-radius: 4px; padding: 8px; border: 1px solid #34a853; margin-bottom: 6px; }
+  .mock-notice .new-tag { font-size: 10px; font-weight: 700; color: #1e7e34; margin-right: 4px; }
+
+  /* 注意事項 */
+  .notice-box { border-left: 4px solid #f9ab00; background: #fffde7; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13px; }
+  .notice-box.danger { border-color: #e74c3c; background: #fce8e6; }
+
+  /* ファイルパス */
+  .filepath { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 2px 6px; }
+
+  a { color: #4285f4; }
+  @media (max-width: 640px) { .screens { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📋 定期配布ポイント廃止に伴う変更指示書</h1>
+<div class="meta">
+  issue: <a href="https://github.com/LiberalArtsUniversity/libe-city/issues/1475" target="_blank">libe-city#1475</a>
+  &nbsp;|&nbsp; 対応期限: <strong>2026年5月リリースまでに</strong>
+  &nbsp;|&nbsp; 優先度: <strong style="color:#c0392b;">high</strong>
+  &nbsp;|&nbsp; 作成: 2026-04-06
+</div>
+
+<!-- 対応概要 -->
+<div class="section">
+  <h2>対応の背景</h2>
+  <p style="font-size:14px;line-height:1.8;">
+    2026年5月より毎月の定期配布ポイントが廃止される（関連: <a href="https://github.com/LiberalArtsUniversity/libe-points-api/issues/834" target="_blank">libe-points-api#834</a>）。<br>
+    現在のUI・利用規約・登録フローには定期配布を前提にした記述・画像が残っており、廃止後にユーザーの目に触れると実態と乖離する。<br>
+    5月切り替えより前に、以下の変更をすべて完了させること。
+  </p>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>対象画面</th>
+        <th>ファイル</th>
+        <th>変更種別</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>①</td>
+        <td>ホーム お知らせ</td>
+        <td><span class="filepath">mypage_top</span></td>
+        <td><span class="badge badge-add">追加</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td>ポイント説明モーダル</td>
+        <td><span class="filepath">PointHowToModal.vue</span></td>
+        <td><span class="badge badge-delete">削除</span> <span class="badge badge-wait">画像待ち</span></td>
+        <td>デザイン制作待ち</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td>リベポイント利用規約</td>
+        <td><span class="filepath">RulePoint.vue</span></td>
+        <td><span class="badge badge-delete">削除</span> <span class="badge badge-warn">要承認</span></td>
+        <td>責任者承認必須</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td>会員登録フロー（4画面）</td>
+        <td><span class="filepath">SelectChargeAccount.vue</span> 他3ファイル</td>
+        <td><span class="badge badge-delete">削除</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td>バッチスケジュール</td>
+        <td><span class="filepath">batchSetShowRecommendMsPopup.ts</span></td>
+        <td><span class="badge badge-update">更新</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ① ホーム -->
+<div class="section">
+  <h2>① ホーム — お知らせバナー追加</h2>
+  <p style="font-size:13px;color:#555;">ページ: <a href="https://liberalartsuniversity.github.io/front-mock/mypage_top.html" target="_blank">mypage_top.html（mock）</a></p>
+
+  <h3>現状</h3>
+  <p style="font-size:14px;">右カラム上部に「お知らせ」バナーが3件表示されている。</p>
+  <div class="mock-notice">
+    <div class="notice-row"><span class="icon">●</span><span class="text">プロフィールの業界・職種登録のお願い</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+    <div class="notice-row"><span class="icon">●</span><span class="text">ペンギン会員期間終了に伴うイルカ会員移行のお知らせ</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+    <div class="notice-row"><span class="icon">●</span><span class="text">ペンギン会員を1年以上ご利用の方へ</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+  </div>
+
+  <h3>変更内容：以下を先頭（または適切な位置）に1件追加する</h3>
+  <div class="mock-notice">
+    <div class="notice-row new-row">
+      <span class="icon">●</span>
+      <span class="text"><span class="new-tag">NEW</span>月初のポイント配布終了・仕組み変更のお知らせ</span>
+      <a class="link" href="https://libecity.com/room_list?room_id=President-Tweet&amp;comment_id=X7p5cNyHHg5duYVrdeDV" target="_blank">詳しくはこちら ↗</a>
+    </div>
+    <div class="notice-row"><span class="icon">●</span><span class="text">プロフィールの業界・職種登録のお願い</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+    <div class="notice-row"><span class="icon">●</span><span class="text">ペンギン会員期間終了に伴うイルカ会員移行のお知らせ</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+    <div class="notice-row"><span class="icon">●</span><span class="text">ペンギン会員を1年以上ご利用の方へ</span><a class="link" href="#">詳しくはこちら ↗</a></div>
+  </div>
+
+  <table class="summary-table" style="margin-top:12px;">
+    <tr><th style="width:120px;">文言</th><td>月初のポイント配布終了・仕組み変更のお知らせ</td></tr>
+    <tr><th>リンク先</th><td><a href="https://libecity.com/room_list?room_id=President-Tweet&comment_id=X7p5cNyHHg5duYVrdeDV" target="_blank">libecity.com/room_list?room_id=President-Tweet&amp;comment_id=X7p5cNyHHg5duYVrdeDV</a></td></tr>
+    <tr><th>リンクアイコン</th><td>「＞」を既存UIから流用</td></tr>
+    <tr><th>スタイル</th><td>既存バナーと同一コンポーネントを使用</td></tr>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:8px;">参考UI: <a href="https://gyazo.com/5381bdf460bf7759038158b2167b7e9b" target="_blank">https://gyazo.com/5381bdf460bf7759038158b2167b7e9b</a></p>
+</div>
+
+<!-- ② ポイントモーダル -->
+<div class="section">
+  <h2>② ポイント説明モーダル — テキスト削除・画像差し替え</h2>
+  <p style="font-size:13px;color:#555;">
+    ページ: <a href="https://liberalartsuniversity.github.io/front-mock/mypage_point.html" target="_blank">mypage_point.html（mock）</a>
+    →「リベポイントの獲得・利用方法について」ボタンから開くモーダル<br>
+    ファイル: <span class="filepath">packages/front/src/components/parts/my_page/Point/PointHowToModal.vue</span>
+  </p>
+
+  <h3>現状</h3>
+  <p style="font-size:14px;">「獲得方法 ① リベシティから受け取る」カードに定期配布の記述がある。</p>
+  <img src="https://gyazo.com/76cf0c4cbdf3ea7abae2ad08c866d60b/raw" alt="現状のポイント説明モーダル" style="max-width:100%;border:1px solid #ddd;border-radius:8px;margin:8px 0;">
+  <p style="font-size:12px;color:#888;">↑ 現状（issueより）：「毎月5日頃の会員区分別ポイント付与」の記述がある</p>
+
+  <h3>変更内容</h3>
+  <div class="change-block">
+    <div class="change-label">【テキスト】 以下の1行を削除</div>
+    <div class="diff">
+      <div class="diff-header">PointHowToModal.vue — 「① リベシティから受け取る」カード</div>
+      <div class="diff-line diff-ctx">  ① リベシティから受け取る</div>
+      <div class="diff-line diff-del">- ・毎月5日頃の会員区分別ポイント付与</div>
+      <div class="diff-line diff-ctx">  ・各種キャンペーンへの参加</div>
+      <div class="diff-line diff-ctx">  ・ノウハウ図書館の記事投稿</div>
+      <div class="diff-line diff-ctx">  などで、ポイントを獲得できます</div>
+    </div>
+  </div>
+
+  <div class="change-block" style="margin-top:16px;">
+    <div class="change-label">【画像】 img_pointHowTo_01.png を差し替え</div>
+    <div class="notice-box">
+      ⏳ <strong>デザイン制作待ち</strong><br>
+      定期配布（毎月5日）の要素を含まない、新しいイラストに更新する。<br>
+      「リベシティ → ユーザーへポイントが渡る」構図は維持。<br>
+      → デザイナーに依頼・画像納品後にエンジニアが差し替え。テキスト削除は画像待ちせず先行してOK。
+    </div>
+  </div>
+</div>
+
+<!-- ③ 利用規約 -->
+<div class="section">
+  <h2>③ リベポイント利用規約 — 第3条 第3項を削除</h2>
+  <p style="font-size:13px;color:#555;">
+    ページ: <a href="https://liberalartsuniversity.github.io/front-mock/rule_point.html" target="_blank">rule_point.html（mock）</a><br>
+    ファイル: <span class="filepath">packages/front/src/components/pages/RulePoint.vue</span>
+  </p>
+
+  <div class="notice-box danger">
+    ⚠️ <strong>必須: PR マージ前に責任者の承認を得ること。</strong><br>
+    利用規約の改定は事前承認が必要。変更箇所を責任者に共有→承認後にマージ。
+  </div>
+
+  <h3>現状</h3>
+  <p style="font-size:14px;">「第3条 ポイントの付与」の第3項に定期配布の条文がある。</p>
+
+  <h3>変更内容</h3>
+  <div class="change-block">
+    <div class="change-label">【削除】 第3項を丸ごと削除し、以降の項番を繰り上げる</div>
+    <div class="diff">
+      <div class="diff-header">RulePoint.vue — 第3条 ポイントの付与</div>
+      <div class="diff-line diff-ctx">  1. 本運営は、会員に対して本運営が定める基準に従いポイントを付与します。</div>
+      <div class="diff-line diff-ctx">  2. 付与されるポイント数、有効期限、換金申請への利用可否その他必要な事項は、本運営が定める基準に基づいて決定します。</div>
+      <div class="diff-line diff-del">- 3. 本運営から利用者へ、会員区分に基づいた毎月のポイント付与を原則として毎月5日に行います。</div>
+      <div class="diff-line diff-del">-    ただし、本運営の都合によってポイント数、付与日、換金申請への利用可否、有効期限その他必要な事項を変更することがあります。</div>
+      <div class="diff-line diff-del">- 4. 本運営は、前項の定期的な付与のほか…（特定イベント・キャンペーン等）</div>
+      <div class="diff-line diff-add">+ 3. 本運営は、前項のほか…（特定イベント・キャンペーン等） ← 番号繰り上げ</div>
+      <div class="diff-line diff-del">- 5. 利用者は、保有ポイントの全部または一部を他の利用者に…</div>
+      <div class="diff-line diff-add">+ 4. 利用者は、保有ポイントの全部または一部を他の利用者に… ← 番号繰り上げ</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#666;margin-top:8px;">※「前項の定期的な付与のほか」という表現も、繰り上げ後は「前項の付与のほか」など定期配布への言及が残らないよう文言を微調整すること。</p>
+</div>
+
+<!-- ④ 会員登録フロー -->
+<div class="section">
+  <h2>④ 会員登録フロー（4ファイル）— 定期配布記述を削除</h2>
+
+  <table class="summary-table" style="margin-bottom:16px;">
+    <thead><tr><th>ファイル</th><th>画面</th></tr></thead>
+    <tbody>
+      <tr><td><span class="filepath">packages/front/src/components/parts/signup/SelectChargeAccount.vue</span></td><td>新規会員登録フロー</td></tr>
+      <tr><td><span class="filepath">packages/front/src/components/parts/my_page/MemberRegist.vue</span></td><td>会員登録・プラン変更</td></tr>
+      <tr><td><span class="filepath">packages/front/src/components/parts/my_page/MemberChangeFromChild.vue</span></td><td>こども→応援会員変更</td></tr>
+      <tr><td><span class="filepath">packages/front/src/components/parts/my_page/MemberRegistForRemoveUser.vue</span></td><td>利用再開</td></tr>
+    </tbody>
+  </table>
+
+  <div class="change-block">
+    <div class="change-label">【削除】 4ファイル共通 — 以下の3行を削除する</div>
+    <div class="diff">
+      <div class="diff-header">各ファイル共通（ファイル内で「毎月5日」で検索して箇所を特定）</div>
+      <div class="diff-line diff-del">- 会員区分に応じて、毎月リベシティからポイントが付与されます。</div>
+      <div class="diff-line diff-del">- ※ポイント数は付与時点の会員区分によって異なります（付与日：毎月5日頃）</div>
+      <div class="diff-line diff-del">- ※毎月の付与ポイント数は変更される場合があります</div>
+    </div>
+  </div>
+  <div class="notice-box" style="margin-top:12px;">
+    💡 各ファイルで <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;">毎月5日</code> または <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;">毎月リベシティから</code> で検索して対象箇所を特定すること。<br>
+    4ファイルすべてに同じ記述があるが、テンプレート上の位置がファイルによって異なる場合がある。
+  </div>
+</div>
+
+<!-- ⑤ バッチ -->
+<div class="section">
+  <h2>⑤ バッチスケジュール — 定期配布への依存を解除</h2>
+  <p style="font-size:13px;color:#555;">ファイル: <span class="filepath">packages/functions/src/pubsubGen2/batchSetShowRecommendMsPopup.ts</span></p>
+
+  <h3>現状コード</h3>
+  <div class="diff">
+    <div class="diff-header">batchSetShowRecommendMsPopup.ts</div>
+    <div class="diff-line diff-ctx">// 毎月5日の12時に実行<span style="background:#ffeef0;color:#b31d28;">（ポイント定期配布バッチが終わるのは10時すぎなので、その後に実行）</span></div>
+    <div class="diff-line diff-ctx">schedule: "0 12 5 * *",</div>
+  </div>
+
+  <h3>変更内容</h3>
+  <div class="change-block">
+    <div class="change-label">【コメント削除】 定期配布バッチへの言及を削除</div>
+    <div class="diff">
+      <div class="diff-header">batchSetShowRecommendMsPopup.ts</div>
+      <div class="diff-line diff-del">- // 毎月5日の12時に実行(ポイント定期配布バッチが終わるのは10時すぎなので、その後に実行)</div>
+      <div class="diff-line diff-add">+ // 毎月5日の12時に実行</div>
+      <div class="diff-line diff-ctx">  schedule: "0 12 5 * *",</div>
+    </div>
+  </div>
+  <div class="notice-box" style="margin-top:12px;">
+    💡 <strong>スケジュールの見直しも検討する（エンジニア判断）</strong><br>
+    現在のスケジュール（毎月5日12時）は「定期配布バッチ完了後」を意識したタイミング設定。<br>
+    定期配布廃止後はこのタイミングに縛られる必要がなくなるため、MSおすすめポップアップの目的に合った別のスケジュールへの変更を検討すること。
+  </div>
+</div>
+
+<!-- 注意事項 -->
+<div class="section">
+  <h2>⚠️ 特記事項・注意点</h2>
+  <table class="summary-table">
+    <tbody>
+      <tr>
+        <td style="width:30px;">✅</td>
+        <td><strong>残すもの</strong></td>
+        <td>ポイント履歴の <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;">transaction_type: "regular"</code> のラベル（「定期配布」）は<strong>過去の履歴表示のために残す</strong>こと。削除しない。</td>
+      </tr>
+      <tr>
+        <td>⚠️</td>
+        <td><strong>承認必須</strong></td>
+        <td>利用規約（③）の改定は<strong>PR マージ前に責任者の承認が必要</strong>。変更差分を共有→確認後にマージ。</td>
+      </tr>
+      <tr>
+        <td>⏳</td>
+        <td><strong>デザイン待ち</strong></td>
+        <td><code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;">img_pointHowTo_01.png</code>（②）の差し替え画像はデザイナーに依頼中。テキスト削除は先行して対応OK。</td>
+      </tr>
+      <tr>
+        <td>🔗</td>
+        <td><strong>リリースタイミング</strong></td>
+        <td><a href="https://github.com/LiberalArtsUniversity/libe-points-api/issues/834" target="_blank">libe-points-api#834</a> の5月切り替えに合わせてリリースする。</td>
+      </tr>
+      <tr>
+        <td>📱</td>
+        <td><strong>アプリ側</strong></td>
+        <td>アプリの対応は別issue <a href="https://github.com/LiberalArtsUniversity/libe-app/issues/4412" target="_blank">libe-app#4412</a> にて管理。この指示書はWeb（front）のみ対象。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;color:#aaa;font-size:12px;margin-top:32px;padding-bottom:40px;">
+  指示書生成: 2026-04-06 &nbsp;|&nbsp; <a href="index.html">← 指示書一覧へ</a>
+</div>
+
+</div>
+</body>
+</html>
