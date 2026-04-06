@@ -120,7 +120,7 @@
         <td>③</td>
         <td>リベポイント利用規約</td>
         <td><span class="filepath">RulePoint.vue</span></td>
-        <td><span class="badge badge-delete">削除</span> <span class="badge badge-warn">要承認</span></td>
+        <td><span class="badge badge-delete">削除</span></td>
         <td>責任者承認必須</td>
       </tr>
       <tr>
@@ -212,11 +212,6 @@
     ファイル: <span class="filepath">packages/front/src/components/pages/RulePoint.vue</span>
   </p>
 
-  <div class="notice-box danger">
-    ⚠️ <strong>必須: PR マージ前に責任者の承認を得ること。</strong><br>
-    利用規約の改定は事前承認が必要。変更箇所を責任者に共有→承認後にマージ。
-  </div>
-
   <h3>現状</h3>
   <p style="font-size:14px;">「第3条 ポイントの付与」の第3項に定期配布の条文がある。</p>
 
@@ -307,11 +302,6 @@
         <td style="width:30px;">✅</td>
         <td><strong>残すもの</strong></td>
         <td>ポイント履歴の <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;">transaction_type: "regular"</code> のラベル（「定期配布」）は<strong>過去の履歴表示のために残す</strong>こと。削除しない。</td>
-      </tr>
-      <tr>
-        <td>⚠️</td>
-        <td><strong>承認必須</strong></td>
-        <td>利用規約（③）の改定は<strong>PR マージ前に責任者の承認が必要</strong>。変更差分を共有→確認後にマージ。</td>
       </tr>
       <tr>
         <td>🔗</td>
